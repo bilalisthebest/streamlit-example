@@ -76,8 +76,8 @@ def calculate_monthly_installment(Unit_price, Down_payment_percentage, Financing
         total_advance_cost += Down_payment_percentage / 100 * Unit_price
 
         # Calculate monthly installment
-        installment = (monthly_financing_fee + (remaining_amount / tenure) +
-                       monthly_insurance_amount + monthly_processing_fee)
+        installment = (remaining_amount + monthly_financing_fee +
+                       monthly_insurance_amount + monthly_processing_fee) / tenure
 
         # Divide monthly installment by 4 if selected
         if Divide_Weekly:
