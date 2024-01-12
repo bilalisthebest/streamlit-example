@@ -111,4 +111,17 @@ def main():
 
         # Display results for each tenure
         results = calculate_monthly_installment(
-            Unit_price, Down_payment_percentage, Financing_type, Divide_Insurance, Divide_Processing_Fee, Divide
+            Unit_price, Down_payment_percentage, Financing_type, Divide_Insurance, Divide_Processing_Fee, Divide_Weekly
+        )
+
+        for result in results:
+            (tenure, total_advance_cost, installment, total_cost_of_ownership) = result
+
+            # Total Advance, Monthly Installment, and Total Cost of Ownership in bold and larger font size
+            st.write(f"**Tenure: {tenure} months**")
+            st.write(f"*Total Advance*: Rs **{total_advance_cost:,.2f}**")
+            st.write(f"*Monthly Installment*: Rs **{installment:,.2f}**")
+            st.write(f"*Total Cost of Ownership*: Rs **{total_cost_of_ownership:,.2f}**")
+
+if __name__ == "__main__":
+    main()
