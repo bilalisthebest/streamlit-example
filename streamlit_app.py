@@ -68,7 +68,16 @@ def calculate_monthly_installment(Unit_price, Down_payment_percentage, Financing
         # Calculate total advance cost
         total_advance_cost = 0
 
-    
+        if not Divide_Insurance:
+            total_advance_cost += insurance_amount
+        if not Divide_Processing_Fee:
+            total_advance_cost += processing_fee
+
+        total_advance_cost += Down_payment_percentage / 100 * Unit_price
+
+        # Calculate monthly installment
+        installment = (remaining_amount / tenure) + monthly_financing_fee + monthly_insurance_amount + monthly_processing_fee
+
         # Divide monthly installment by 4 if selected
         if Divide_Weekly:
             weekly_installment = installment / 4
