@@ -1,5 +1,4 @@
 import streamlit as st
-import math
 
 # IN & F rates
 insurance_rates = {
@@ -77,8 +76,8 @@ def calculate_monthly_installment(Unit_price, Down_payment_percentage, Financing
         total_advance_cost += Down_payment_percentage / 100 * Unit_price
 
         # Calculate monthly installment
-        installment = (monthly_financing_fee + (remaining_amount / tenure) +
-                       monthly_insurance_amount + monthly_processing_fee)
+        installment = (remaining_amount + monthly_financing_fee +
+                       monthly_insurance_amount + monthly_processing_fee) / tenure
 
         # Divide monthly installment by 4 if selected
         if Divide_Weekly:
@@ -112,17 +111,4 @@ def main():
 
         # Display results for each tenure
         results = calculate_monthly_installment(
-            Unit_price, Down_payment_percentage, Financing_type, Divide_Insurance, Divide_Processing_Fee, Divide_Weekly
-        )
-
-        for result in results:
-            (tenure, total_advance_cost, installment, total_cost_of_ownership) = result
-
-            # Total Advance, Monthly Installment, and Total Cost of Ownership in bold and larger font size
-            st.write(f"**Tenure: {tenure} months**")
-            st.write(f"*Total Advance*: Rs **{total_advance_cost:,.2f}**")
-            st.write(f"*Monthly Installment*: Rs **{installment:,.2f}**")
-            st.write(f"*Total Cost of Ownership*: Rs **{total_cost_of_ownership:,.2f}**")
-
-if __name__ == "__main__":
-    main()
+            Unit_price, Down_payment_percentage, Financing_type, Divide_Insurance, Divide_Processing_Fee, Divide
